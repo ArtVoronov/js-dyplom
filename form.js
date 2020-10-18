@@ -17,7 +17,7 @@ const Template = [`
 
 const INVALID_CLASS = "invalid"
 const ACTIVE_CLASS = "active"
-//empty - не может случится но пускай)
+//empty - не может случится но пускай) перепутал, может))
 const errorMessage = {wLogin:"email or password is wrong", login: 'Please check login', name: 'Name is empty', age:'Age is not a number', email:'Email is not email', city:'City is empty', password:'Password is empty', rPassword: "Password don't match" }
 
 let inputs
@@ -76,14 +76,9 @@ function setActive(target) {
     if (target.target) {
         target = target.target
     }
-    console.log(sections)
-    console.log(target)
-    console.log(Array.from(sections).indexOf(target))
-    console.log(Math.abs(Array.from(sections).indexOf(target) - 1))
     sections[Math.abs(Array.from(sections).indexOf(target))].classList.add(ACTIVE_CLASS)
     // target.classList.add(ACTIVE_CLASS)
     sections[Math.abs(Array.from(sections).indexOf(target) - 1)].classList.remove(ACTIVE_CLASS)
-    console.log(Math.abs(Array.from(sections).indexOf(target) - 1))
     removeForm()
     initForm(Template[Math.abs(Array.from(sections).indexOf(target))])
 }
@@ -136,8 +131,6 @@ const fault = (errorMessage) => {
         alert.id = "alert"
         container.append(alert)
 
-        console.log(alert)
-
         setTimeout(() => {
             alert.remove()
         }, 2000)
@@ -162,7 +155,6 @@ const getData = (userInfo) => {
 inputs[0].focus()
 
 const checkUserData = (target) => {
-    console.log(target.value)
     let regExp
     switch (target.id) {
         case "login": {
@@ -225,7 +217,6 @@ function onClick () {
     event.preventDefault()
     let user = new User()
     getData(user)
-    console.log(user)
     switch (event.target.value) {
         case "Login": {
             if (inputs.email === User.email && inputs.password === User.password) { sayHi() } else fault(errorMessage.wLogin)
