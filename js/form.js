@@ -98,7 +98,7 @@ const fault = (errorMessage) => {
         alert.innerText = errorMessage
         alert.className = "alert"
         alert.id = "alert"
-        container.append(alert)
+        document.body.append(alert)
 
         setTimeout(() => {
             alert.remove()

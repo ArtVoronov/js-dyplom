@@ -1,10 +1,15 @@
 import { users,INVALID_CLASS, Template, errorMessage, regObject } from './constants.js'
 
 export const checkLogin = (email, password) => {
-    users.forEach(user => {
-        if (email.value === user.email && password.value === user.password) { return sayHi(user) }
+    let userHi = users.filter(user => {
+        if (email.value === user.email && password.value === user.password) {
+            console.log(user)
+            return user
+        }
     });
-    return fault(errorMessage.wLogin)
+    
+    console.log(userHi[0])
+    !!userHi?sayHi(userHi[0]):fault(errorMessage.wLogin)
 }
 
 const sayHi = (user) => {
