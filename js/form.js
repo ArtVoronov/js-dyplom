@@ -1,47 +1,16 @@
+import { user, INVALID_CLASS, Template, errorMessage, regObject } from './constants.js'
+import { sayHi } from './login.js'
+
 const formContainer = document.getElementById("form-container")
 
-const Template = [`
-    <input placeholder="email" type="text" id="email">
-    <input placeholder="password" type="password" id="password">
-    <input type="submit" id="submit" value="Login">
-`,`
-    <input placeholder="login" type="text" id="login">    
-    <input placeholder="name" type="text" id="name">
-    <input placeholder="age" type="text" id="age">
-    <input placeholder="email" type="text" id="email">
-    <input placeholder="city" type="text" id="city">
-    <input placeholder="password" type="password" id="password">
-    <input placeholder="repeat password" type="password" id="repeat password">
-    <input type="submit" id="submit" value="Register">
-`]
-
-const INVALID_CLASS = "invalid"
 const ACTIVE_CLASS = "active"
-//empty - не может случится но пускай) перепутал, может))
-const errorMessage = {wLogin:"email or password is wrong", login: 'Please check login', name: 'Name is empty', age:'Age is not a number', email:'Email is not email', city:'City is empty', password:'Password is empty', rPassword: "Password don't match" }
+
 
 let inputs
 let buttonSubmit
 
-class User {
-    constructor(login, name, age, email, city, password, rPassword) {
-        this.login = login
-        this.name = name
-        this.age = age
-        this.email = email
-        this.city = city
-        this.password = password
-        this["repeat password"] = rPassword
-    }
-}
 
-const regObject = {
-    login: /^[^,.]+$/,
-    age: /^\d+$/,
-    email: /\S+@\S+\.\S+/
-}
-
-const initForm = (template) => {
+export const initForm = (template) => {
     let form = document.createElement('form')
     form.className = "form"
     form.id = "form"
@@ -209,20 +178,20 @@ const checkUserData = (target) => {
     }
 }
 
-const sayHi = () => {
-    container.innerText = `Hello, ${User.name}`
-}
-
 function onClick () {
     event.preventDefault()
-    let user = new User()
-    getData(user)
     switch (event.target.value) {
         case "Login": {
-            if (inputs.email === User.email && inputs.password === User.password) { sayHi() } else fault(errorMessage.wLogin)
+            console.log(user)
+            console.log(inputs.email, inputs.password)
+            if (inputs.email.value === user.email && inputs.password.value === user.password) { sayHi(user) } else fault(errorMessage.wLogin)
             break;
         }
-        case "Register": break;
+        case "Register": {
+            let user = new User()
+            getData(user)
+            break;
+        }
     }
     
 }
