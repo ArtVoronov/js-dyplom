@@ -12,7 +12,14 @@ export class User {
     }
 }
 
-export const user = new User ("Artem" , "Artem", 25, "avoronov1808@gmail.com", "Minsk", "123", "123")
+export const users = [
+    new User("Artem", "Artem", 25, "avoronov1808@gmail.com", "Minsk", "123", "123"),
+    new User("Ivan", "Ivam", 22, "ivan@gmail.com", "Minsk", "1234", "1234"),
+    new User("Ivan", "Ivam", 22, "ivan@gmail.com", "Minsk", "1234", "1234"),
+    new User("Ivan", "Ivam", 22, "ivan@gmail.com", "Minsk", "1234", "1234"),
+    new User("Ivan", "Ivam", 22, "ivan@gmail.com", "Minsk", "1234", "1234"),
+    
+]
 
 export const Template = [`
     <input placeholder="email" type="text" id="email">

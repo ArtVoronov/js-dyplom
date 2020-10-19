@@ -1,5 +1,5 @@
-import { user, INVALID_CLASS, Template, errorMessage, regObject } from './constants.js'
-import { sayHi } from './login.js'
+import { INVALID_CLASS, Template, errorMessage, regObject } from './constants.js'
+import { checkLogin } from './login.js'
 
 const formContainer = document.getElementById("form-container")
 
@@ -182,9 +182,7 @@ function onClick () {
     event.preventDefault()
     switch (event.target.value) {
         case "Login": {
-            console.log(user)
-            console.log(inputs.email, inputs.password)
-            if (inputs.email.value === user.email && inputs.password.value === user.password) { sayHi(user) } else fault(errorMessage.wLogin)
+            checkLogin(inputs.email, inputs.password)
             break;
         }
         case "Register": {
