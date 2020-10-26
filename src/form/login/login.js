@@ -1,5 +1,5 @@
-import { INVALID_CLASS, ACTIVE_CLASS, ERROR_MESSAGE } from "../../js/constants";
-import { users } from "../../js/users";
+import { INVALID_CLASS, ERROR_MESSAGE } from "../../js/constants";
+import { users } from "../users";
 import { NodeExtendedUtils } from "../../js/utils";
 import { AlertMessage } from "../alert";
 import { template } from "./template";

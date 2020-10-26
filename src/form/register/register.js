@@ -1,4 +1,5 @@
 import { INVALID_CLASS, REG_OBJECT } from "../../js/constants";
+import { User, users } from "../users";
 import { NodeExtendedUtils } from "../../js/utils";
 import { template } from "./template";
 
@@ -72,14 +73,15 @@ export function mountRegister() {
     },
 
     getFromData() {
-      return {
-        login: this.login.value,
-        name: this.name.value,
-        age: this.age.value,
-        email: this.email.value,
-        city: this.city.value,
-        password: this.password.value,
-      };
+      let user = new User(
+        this.login.value,
+        this.name.value,
+        this.age.value,
+        this.email.value,
+        this.city.value,
+        this.password.value
+      );
+      return user;
     },
   };
 
@@ -98,8 +100,9 @@ export function mountRegister() {
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    const data = formHelper.getFromData();
-    console.log(data);
+    const user = formHelper.getFromData();
+    users.push(user);
+    console.log(users);
   });
 
   function setSubmitState() {

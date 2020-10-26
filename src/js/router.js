@@ -1,4 +1,4 @@
-import { CONTAINER, FORM_CONTAINER } from "./constants";
+import { CONTAINER } from "./constants";
 import { mountForm } from "../form/";
 
 const FORM_ROUTE = "/";

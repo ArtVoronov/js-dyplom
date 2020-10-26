@@ -1,6 +1,3 @@
-// import { ALERT_CONTAINER } from "./constants";
-import { users } from "./users";
-
 const parser = new DOMParser();
 
 export const createFromTemplate = (template) => {
@@ -34,14 +31,3 @@ export class NodeExtendedUtils {
     this.element.remove();
   }
 }
-
-// export function addAlertMessage(message) {
-//   let alert = document.createElement("div");
-//   alert.classList.add("alert");
-//   alert.innerText = message;
-//   ALERT_CONTAINER.appendChild(alert);
-// }
-
-// export function deleteAlertMessage() {
-//   ALERT_CONTAINER.removeChild(ALERT_CONTAINER.firstChild);
-// }
