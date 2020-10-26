@@ -1,28 +1,25 @@
-import { INVALID_CLASS, ACTIVE_CLASS } from "../../js/constants";
-import {
-  NodeExtendedUtils,
-  addAlertMessage,
-  deleteAlertMessage,
-} from "../../js/utils";
+import { INVALID_CLASS, ACTIVE_CLASS, ERROR_MESSAGE } from "../../js/constants";
+import { users } from "../../js/users";
+import { NodeExtendedUtils } from "../../js/utils";
+import { AlertMessage } from "../alert";
 import { template } from "./template";
 
 export function mountLogin() {
-  debugger;
   const form = NodeExtendedUtils.createFromTemplate(template);
 
-  const email = form.querySelector("#email");
-  const password = form.querySelector("#password");
+  const emailInput = form.querySelector("#email");
+  const passwordInput = form.querySelector("#password");
   const submit = form.querySelector("#submit");
 
   let alert = null;
 
-  email.addEventListener("input", inputEventHandler);
-  password.addEventListener("input", inputEventHandler);
+  emailInput.addEventListener("input", inputEventHandler);
+  passwordInput.addEventListener("input", inputEventHandler);
   submit.addEventListener("click", onClick);
-  setDisableSubmit();
+  setSubmitState();
 
   function inputEventHandler(event) {
-    const hasInvalidClass = event.target.classList.contains(ACTIVE_CLASS);
+    const hasInvalidClass = event.target.classList.contains(INVALID_CLASS);
     const isValid = event.target.value !== "";
 
     if (!hasInvalidClass && !isValid) {
@@ -32,14 +29,27 @@ export function mountLogin() {
     if (hasInvalidClass && isValid) {
       event.target.classList.remove(INVALID_CLASS);
     }
+
+    setSubmitState();
   }
 
   function onClick(event) {
     event.preventDefault();
+    let className;
+    const user = users.find(({ email }) => email === emailInput.value);
+    if (user && passwordInput.value === user.password) {
+      alert = `Hi, there ${user.name}`;
+      className = "ok";
+    } else {
+      alert = ERROR_MESSAGE["wLogin"];
+      className = "alert";
+    }
+
+    AlertMessage(alert, className);
   }
 
-  function setDisableSubmit() {
-    submit.disabled = !(email.value && password.value);
+  function setSubmitState() {
+    submit.disabled = !(emailInput.value && passwordInput.value);
   }
 
   return form;

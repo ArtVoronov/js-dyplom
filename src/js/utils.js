@@ -1,4 +1,4 @@
-import { ALERT_CONTAINER } from "./constants";
+// import { ALERT_CONTAINER } from "./constants";
 import { users } from "./users";
 
 const parser = new DOMParser();
@@ -15,19 +15,19 @@ export class NodeExtendedUtils {
 
   static createFromTemplate(template) {
     const { body } = parser.parseFromString(template, "text/html");
-    return body;
+    return body.firstElementChild;
   }
 
   addToClassList(...classes) {
     this.element.classList.add(...classes);
   }
 
-  addEventListner(event, callback) {
+  addEventListnerToElement(event, callback) {
     this.element.addEventListner(event, callback);
   }
 
-  appendTo(...elements) {
-    this.element.appendTo(...elements);
+  appendTo(to = document.body) {
+    this.element.append(this.element);
   }
 
   deleteElement() {
@@ -35,13 +35,13 @@ export class NodeExtendedUtils {
   }
 }
 
-export function addAlertMessage(message) {
-  let alert = document.createElement("div");
-  alert.classList.add("alert");
-  alert.innerText = message;
-  ALERT_CONTAINER.appendChild(alert);
-}
+// export function addAlertMessage(message) {
+//   let alert = document.createElement("div");
+//   alert.classList.add("alert");
+//   alert.innerText = message;
+//   ALERT_CONTAINER.appendChild(alert);
+// }
 
-export function deleteAlertMessage() {
-  ALERT_CONTAINER.removeChild(ALERT_CONTAINER.firstChild);
-}
+// export function deleteAlertMessage() {
+//   ALERT_CONTAINER.removeChild(ALERT_CONTAINER.firstChild);
+// }

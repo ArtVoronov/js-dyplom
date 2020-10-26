@@ -1,8 +1,6 @@
 import { CONTAINER, FORM_CONTAINER } from "./constants";
 import { mountForm } from "../form/";
 
-// const mountForm = require("../form/index");
-
 const FORM_ROUTE = "/";
 
 const routerConfig = {

@@ -1,7 +1,7 @@
 export class User {
   constructor(login, name, age, email, city, password) {
     this.login = login;
-    this.name - name;
+    this.name = name;
     this.age = age;
     this.email = email;
     this.city = city;

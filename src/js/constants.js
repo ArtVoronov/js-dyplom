@@ -1,8 +1,6 @@
 export const INVALID_CLASS = "invalid";
 export const ACTIVE_CLASS = "active";
-export const CONTAINER = document.getElementById("container");
-export const FORM_CONTAINER = document.getElementById("form-container");
-export const ALERT_CONTAINER = document.getElementById("alert-container");
+export const CONTAINER = document.body;
 
 export const ERROR_MESSAGE = {
   wLogin: "email or password is wrong",

@@ -5,14 +5,15 @@ $form-inputs-bgcolor-onhover: #f5f5f5;
 $form-buttons-submit-onhover: #bebebe;
 $alerts: red;
 
-
+//other
+$display: flex;
 
 html {
   height: 100%;
   overflow: hidden;
 }
 body {
-  display: flex;
+  display: $display;
   font-style: oblique;
   font-size: 1.4em;
   align-items: center;
@@ -23,7 +24,7 @@ body {
   min-width: 20em;
   min-height: 430px;
   padding: 3em;
-  display: flex;
+  display: $display;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -33,7 +34,7 @@ body {
 }
 
 #switcher {
-  display: flex;
+  display: $display;
   align-content: space-between;
   flex-grow: 1;
 }
@@ -65,7 +66,7 @@ body {
 
 #form-container {
   flex-grow: 3;
-  display: flex;
+  display: $display;
   width: auto;
   justify-content: center;
   align-items: center;
@@ -74,7 +75,7 @@ body {
 }
 
 #alert-container {
-  display: flex;
+  display: $display;
   justify-content: center;
   align-content: center;
   height: 50px;
@@ -82,7 +83,7 @@ body {
 }
 
 form {
-  display: flex;
+  display: $display;
   width: auto;
   height: fit-content;
   align-items: center;
@@ -114,6 +115,7 @@ input.invalid {
 
 #submit {
   margin-top: 1.5em;
+  
 }
 
 input::placeholder {
@@ -121,9 +123,9 @@ input::placeholder {
 }
 
 #submit:hover {
-  margin-top: 1.5em;
+  // margin-top: 1.5em;
   background-color: $form-buttons-submit-onhover;
-  border: $form-buttons-submit-onhover solid 3px;
+  // border: $form-buttons-submit-onhover solid 3px;
 }
 
 input:hover,
